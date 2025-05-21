@@ -1,7 +1,3 @@
-Claro! Aqui está um exemplo de `README.md` profissional para o seu projeto Java com conexão ao banco de dados MySQL, feito com **VS Code e sem Maven**:
-
----
-
 ## 📄 `README.md`
 
 ```markdown
@@ -11,7 +7,7 @@ Este projeto é um sistema básico de cadastro (CRUD) desenvolvido em Java, com 
 
 ---
 
-## 🧰 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - Java 17 (ou versão compatível)
 - JDBC (MySQL Connector/J)
@@ -21,9 +17,7 @@ Este projeto é um sistema básico de cadastro (CRUD) desenvolvido em Java, com 
 
 ---
 
-## 🔗 Estrutura do Projeto
-
-```
+## Estrutura do Projeto
 
 sistema/
 ├── lib/
@@ -40,10 +34,6 @@ sistema/
 ├── .vscode/
 └── README.md
 
-````
-
----
-
 ## ⚙️ Configuração Inicial
 
 1. **Instale o XAMPP** e ative o MySQL.
@@ -52,27 +42,8 @@ sistema/
 4. Coloque o `.jar` em `lib/` e adicione-o ao classpath no VS Code:
    - Vá em `Project Settings → Libraries → Add JARs`.
 
----
 
-## 🧪 Teste da Conexão
-
-A classe `Conexao.java` possui o método `conectar()`, responsável por conectar-se ao banco de dados. Use a classe `App.java` para testar:
-
-```java
-public class App {
-    public static void main(String[] args) {
-        if (Conexao.conectar() != null) {
-            System.out.println("Conexão bem-sucedida!");
-        } else {
-            System.out.println("Falha na conexão.");
-        }
-    }
-}
-````
-
----
-
-## 🚀 Funcionalidades planejadas
+## Funcionalidades planejadas
 
 * [x] Conexão com banco de dados
 * [ ] Interface de login
@@ -80,11 +51,9 @@ public class App {
 * [ ] Listagem de registros
 * [ ] Atualização e exclusão de dados
 
----
+## Autor
 
-## 🧑‍💻 Autor
-
-Desenvolvido por \[Seu Nome].
+Desenvolvido por Samuel Filipe.
 
 ---
 
@@ -92,9 +61,3 @@ Desenvolvido por \[Seu Nome].
 
 Este projeto é de uso livre para fins de estudo e aprendizado.
 
-```
-
----
-
-Se quiser, posso adaptar esse `README` com seu nome, funcionalidades específicas do seu sistema ou até gerar o arquivo pronto em `.md`. Deseja isso?
-```
