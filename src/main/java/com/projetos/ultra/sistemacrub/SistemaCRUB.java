@@ -9,9 +9,7 @@ public class SistemaCRUB {
         if (conexao.conectar() != null) {
             System.out.println("OK");
         }else{
-            System.out.println("|--------|");
-            System.out.println("|  Erro  |");
-            System.out.println("|--------|");
+            System.out.println("Erro");
         }
     }
 }
