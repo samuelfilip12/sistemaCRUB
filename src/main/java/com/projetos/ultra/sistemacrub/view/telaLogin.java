@@ -1,14 +1,19 @@
 package com.projetos.ultra.sistemacrub.view;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class telaLogin extends JFrame {
-    public telaLogin() {
+import com.projetos.ultra.sistemacrub.controller.Usuario;
+import com.projetos.ultra.sistemacrub.dao.usuarioDAO;
+
+public class TelaLogin extends JFrame {
+
+    private JTextField reb_Login;
+    private JPasswordField reb_Senha;
+
+    public TelaLogin() {
         setTitle("Sistema de Login");
-        JFrame frame = new JFrame("Login do Sistema");
         setLayout(null);
         setSize(500, 300);
         
@@ -19,28 +24,23 @@ public class telaLogin extends JFrame {
         painel.setBorder(BorderFactory.createTitledBorder("Login"));
         add(painel);
 
-        // Estilizar com uma imagem;
-        JLabel logo_projeto = new JLabel(new ImageIcon(""));
-        logo_projeto.setBounds(20, 50, 100, 100);
-        add(logo_projeto);
-
         //Titulo Usuário;
         JLabel lb_usuario = new JLabel("Usuário:");
         lb_usuario.setBounds(20, 30, 60, 25);
         painel.add(lb_usuario);
         //Reber Usuário
-        JTextField reb_usuario = new JTextField();
-        reb_usuario.setBounds(90, 30, 180, 25);
-        painel.add(reb_usuario);
+        reb_Login = new JTextField();
+        reb_Login.setBounds(90, 30, 180, 25);
+        painel.add(reb_Login); 
 
         //Titulo Senha
         JLabel lb_senha = new JLabel("Senha:");
         lb_senha.setBounds(20, 65, 60, 25);
         painel.add(lb_senha);
         //Rebecer Senha
-        JPasswordField reb_senha = new JPasswordField();
-        reb_senha.setBounds(90, 65, 180, 25);
-        painel.add(reb_senha);
+        reb_Senha = new JPasswordField();
+        reb_Senha.setBounds(90, 65, 180, 25);
+        painel.add(reb_Senha);
 
         // Botão Entrar para a função entrar
         JButton btnEntrar = new JButton("Entrar");
@@ -52,9 +52,39 @@ public class telaLogin extends JFrame {
         btnSair.setBounds(180, 140, 100, 30);
         painel.add(btnSair);
 
-        btnSair.addActionListener(e -> System.exit(0));
+        btnSair.addActionListener(new ActionListener() {
+        @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
 
+        //Direcionamento 
+
+        btnEntrar.addActionListener((new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                usuarioDAO dao = new usuarioDAO();
+                String login = reb_Login.getText();
+                String senha = new String(reb_Senha.getPassword());
+
+                Usuario usuarioLogado =dao.autenticar(login, senha);
+
+                if (usuarioLogado != null) {
+                    if (usuarioLogado.getTipo().equalsIgnoreCase("admin")) {
+                        new TelaAdmin().setVisible(true);
+                    }else{
+                        new TelaComum().setVisible(true);
+                    }
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usuário ou senha invalidos");
+                }
+            }
+        }));
+    
         setVisible(true);
-
     }
 }
+
+
